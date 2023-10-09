@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/card_main.dart';
 
 // Separar los widgets complejos en archivos independientes, mejora la lectura del código de nuestra aplicación
 class Home extends StatefulWidget {
@@ -15,7 +16,7 @@ class _HomeState extends State<Home> {
 
   // Listado de páginas a mostrar dependiendo del elemento seleccionado en la barra inferior de navegación
   static List<Widget> pages = [
-    Container(color: Colors.red),
+    const CardMain(),
     Container(color: Colors.green),
     Container(color: Colors.blue)
   ];
