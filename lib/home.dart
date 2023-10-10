@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/card_author.dart';
 import 'package:fooderlich/card_main.dart';
+import 'package:fooderlich/card_trends.dart';
 
 // Separar los widgets complejos en archivos independientes, mejora la lectura del código de nuestra aplicación
 class Home extends StatefulWidget {
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> {
   static List<Widget> pages = [
     const CardMain(),
     const CardAuthor(),
-    Container(color: Colors.blue)
+    const CardTrends()
   ];
 
   // método privado (controlador) para conocer que elemento de la barra de navegación inferior ha sido tocado
@@ -32,6 +33,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    // Existen 3 catagorias principales de widgets: Estructura y Navegación, Mostrar información, y Posicionamiento
+
     // Scaffold es uno de los widget mas usados en Fluuter, que se encarga de definir el diseño y estructura de la aplicación
     // puede esta compuesto por: BottomSheet, BottomNavigationBar, Drawer, FloatingActionButton, SnackBar para la navegación
     return Scaffold(
