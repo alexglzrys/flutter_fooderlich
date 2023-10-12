@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fooderlich/fooderlich_theme.dart';
 import 'package:fooderlich/widgets/circle_image.dart';
 
-class AuthorHeader extends StatelessWidget {
+// Los SatefulWidgets pueden administrar su estado dinámicamente
+class AuthorHeader extends StatefulWidget {
   // Propiedades para este widget
   final String author;
   final String title;
@@ -14,6 +15,14 @@ class AuthorHeader extends StatelessWidget {
       required this.author,
       required this.title,
       required this.imageProvider});
+
+  @override
+  State<AuthorHeader> createState() => _AuthorHeaderState();
+}
+
+class _AuthorHeaderState extends State<AuthorHeader> {
+  // Propiedades que representan el estado de este Widget
+  bool _isFavorited = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,7 @@ class AuthorHeader extends StatelessWidget {
             children: [
               // Widget personalizado para mostrar la imagen de avatar del autor
               CircleImage(
-                imageProvider: imageProvider,
+                imageProvider: widget.imageProvider,
                 imageRadius: 28,
               ),
               // SizeBox nos permite agregar separación entre widgets, ya sea en en lo ancho o alto
@@ -43,11 +52,11 @@ class AuthorHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    author,
+                    widget.author,
                     style: FooderlichTheme.lightTextTheme.displayMedium,
                   ),
                   Text(
-                    title,
+                    widget.title,
                     style: FooderlichTheme.lightTextTheme.displaySmall,
                   )
                 ],
@@ -55,15 +64,25 @@ class AuthorHeader extends StatelessWidget {
             ],
           ),
           IconButton(
-            icon: const Icon(Icons.favorite_border),
+            // Mostrar el icono con base al estado de este widget
+            icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
             iconSize: 30,
-            color: Colors.grey[400],
+            color: Colors.red[400],
             onPressed: () {
-              // Cuando sea presionado el icono, se mostrará un snackBar en la parte inferior de la pantalla, mostrando el mensaje 'Licuado agregado a favoritos'
-              // El widget SnackBar se usa para mostrar brevemente información a los usuarios cuando se ha realizado una acción (como un Toast)
-              const snackBar =
-                  SnackBar(content: Text('Licuado agregado a favoritos'));
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              // Administrar el estado de este widget
+              setState(() {
+                // El estado ha cambiado,
+                // Flutter sabe que este widget lo tienen que retirar, y volver a construir con su nuevo estado en el árbol de widgets
+                _isFavorited = !_isFavorited;
+              });
+
+              if (_isFavorited) {
+                // Cuando sea presionado el icono, se mostrará un snackBar en la parte inferior de la pantalla, mostrando el mensaje 'Licuado agregado a favoritos'
+                // El widget SnackBar se usa para mostrar brevemente información a los usuarios cuando se ha realizado una acción (como un Toast)
+                const snackBar =
+                    SnackBar(content: Text('Licuado agregado a favoritos'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
             },
           )
         ],
