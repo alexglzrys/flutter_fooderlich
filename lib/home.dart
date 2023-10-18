@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/card_author.dart';
-import 'package:fooderlich/card_main.dart';
+//import 'package:fooderlich/card_main.dart';
 import 'package:fooderlich/card_trends.dart';
+import 'package:fooderlich/models/screens/explore_screen.dart';
 
 // Separar los widgets complejos en archivos independientes, mejora la lectura del código de nuestra aplicación
 class Home extends StatefulWidget {
@@ -18,7 +19,8 @@ class _HomeState extends State<Home> {
 
   // Listado de páginas a mostrar dependiendo del elemento seleccionado en la barra inferior de navegación
   static List<Widget> pages = [
-    const CardMain(),
+    // Pantalla de Exploración
+    ExploreScreen(),
     const CardAuthor(),
     const CardTrends()
   ];
@@ -60,11 +62,9 @@ class _HomeState extends State<Home> {
           // Elementos de la barra de navegación
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.card_giftcard), label: 'Card'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.card_giftcard), label: 'Card 2'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.card_giftcard), label: 'Card 3')
+                icon: Icon(Icons.explore), label: 'Explorar'),
+            BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Recetas'),
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Comprar')
           ]),
     );
   }
