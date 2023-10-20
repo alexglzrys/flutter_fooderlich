@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooderlich/api/mock_fooderlich_service.dart';
 import 'package:fooderlich/components/components.dart';
 
+// Pantalla principal referente al explorador de recetas del día y publicaciones recientes
 class ExploreScreen extends StatelessWidget {
   // crea unA instancia simulador de respuestas asincronas de servidor
   // Fake API

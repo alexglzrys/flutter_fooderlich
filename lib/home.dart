@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/card_author.dart';
-//import 'package:fooderlich/card_main.dart';
 import 'package:fooderlich/card_trends.dart';
 import 'package:fooderlich/models/screens/explore_screen.dart';
+import 'package:fooderlich/models/screens/recipes_screen.dart';
 
 // Separar los widgets complejos en archivos independientes, mejora la lectura del código de nuestra aplicación
 class Home extends StatefulWidget {
@@ -21,7 +20,7 @@ class _HomeState extends State<Home> {
   static List<Widget> pages = [
     // Pantalla de Exploración
     ExploreScreen(),
-    const CardAuthor(),
+    RecipesScreen(),
     const CardTrends()
   ];
 
