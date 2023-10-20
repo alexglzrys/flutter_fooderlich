@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/card_trends.dart';
 import 'package:fooderlich/models/screens/explore_screen.dart';
+import 'package:fooderlich/models/screens/grocery_screen.dart';
 import 'package:fooderlich/models/screens/recipes_screen.dart';
 
 // Separar los widgets complejos en archivos independientes, mejora la lectura del código de nuestra aplicación
@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
     // Pantalla de Exploración
     const ExploreScreen(),
     RecipesScreen(),
-    const CardTrends()
+    const GroceryScreen()
   ];
 
   // método privado (controlador) para conocer que elemento de la barra de navegación inferior ha sido tocado
