@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // Importación de archivo de tema
 import 'package:fooderlich/fooderlich_theme.dart';
 import 'package:fooderlich/home.dart';
+import 'package:fooderlich/models/models.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(const Fooderlich());
 
@@ -19,7 +21,12 @@ class Fooderlich extends StatelessWidget {
       // Agregar tema personalizado a la aplicación
       theme: theme,
       title: 'Fooderlich',
-      home: const Home(),
+      // 1. Proveer los proveedores de estado
+      // MultiProvider() acepta una lista de proveedores de estado a los que pueden acceder los widgets descendiente de Home
+      home: MultiProvider(providers: [
+        // ChangeNotifierProvider() crea una instancia de TabManager, que escucha los cambios en el índice de pestañas y notifica a sus oyentes de posibles cambios
+        ChangeNotifierProvider(create: (context) => TabManager())
+      ], child: const Home()),
     );
   }
 }

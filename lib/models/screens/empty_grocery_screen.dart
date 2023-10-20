@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/models/models.dart';
+import 'package:provider/provider.dart';
 
 class EmptyGroceryScreen extends StatelessWidget {
   const EmptyGroceryScreen({super.key});
@@ -32,7 +34,13 @@ class EmptyGroceryScreen extends StatelessWidget {
             ),
             // Botón
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                // 3. Acceder al estado
+                // Provider.of<TabManager>(context) accede a la instancia de TabManager creada por el ChangeNotifierProvider()
+                // Se invoca al método goToRecipes() del objeto TabManager para establecer el índice de la pestaña a 1, la cual se enceuntra asociada con la página de Explorado de Recetas
+                // Internamente notifica al Consumer del cambio en el estado, y este le informa a sus widgets descendientes (que usan el estado) para que se reconstruyan
+                Provider.of<TabManager>(context, listen: false).goToRecipes();
+              },
               textColor: Colors.white,
               color: Colors.green,
               // Aplicar bordes redondeads al botón
