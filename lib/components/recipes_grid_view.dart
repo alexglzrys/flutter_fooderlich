@@ -23,12 +23,19 @@ class RecipesGridView extends StatelessWidget {
           scrollDirection: Axis.vertical,
           // SliverGridDelegateWithFixedCrossAxisCount() crea una cuadrícula con un número fijo de elementos en el eje secundario o transversal
           // El eje transversal esta dado por la dirección opuesta del eje principal del grid, definida en la propiedad scrollDirection (por defecto es vertical)
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          /*gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               // Indicamos que existirán 2 columnas en el eje secundario
               // Por tanto el grid sera de N Filas x 2 Columnas
               crossAxisCount: 2,
               mainAxisSpacing: 3.0,
-              crossAxisSpacing: 3.0),
+              crossAxisSpacing: 3.0),*/
+          // SliverGridDelegateWithMaxCrossAxisExtent() crea cuadrículas con elementos que tienen un tamaño máximo definido en el eje secundario.
+          // Dependiendo del espacio restante, este se encargará de agrupar los elementos en filas y columnas como espacio esté disponible
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              // El ancho será del 100%
+              maxCrossAxisExtent: double.infinity,
+              // Separación entre cada elemento en el eje principal será de 20 puntos
+              mainAxisSpacing: 20),
           // Por cada receta se genera un widget RecipeThumbnail, mismo que recibe la información de la receta para mostrarla
           itemBuilder: (context, index) {
             // Recuperar la receta actual en el listado de recetas pasadas al widget principal

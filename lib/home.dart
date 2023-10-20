@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   // Listado de páginas a mostrar dependiendo del elemento seleccionado en la barra inferior de navegación
   static List<Widget> pages = [
     // Pantalla de Exploración
-    ExploreScreen(),
+    const ExploreScreen(),
     RecipesScreen(),
     const CardTrends()
   ];
