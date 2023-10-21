@@ -25,7 +25,9 @@ class Fooderlich extends StatelessWidget {
       // MultiProvider() acepta una lista de proveedores de estado a los que pueden acceder los widgets descendiente de Home
       home: MultiProvider(providers: [
         // ChangeNotifierProvider() crea una instancia de TabManager, que escucha los cambios en el índice de pestañas y notifica a sus oyentes de posibles cambios
-        ChangeNotifierProvider(create: (context) => TabManager())
+        ChangeNotifierProvider(create: (context) => TabManager()),
+        // Creo una instancia de CroceryManager, que escucha los cambios en la lista de alimentos o ingredientes, y notifica a sus oyentes de posibles cambios
+        ChangeNotifierProvider(create: (context) => GroceryManager())
       ], child: const Home()),
     );
   }
