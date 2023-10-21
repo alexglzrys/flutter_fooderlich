@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/models/models.dart';
 import 'package:fooderlich/models/screens/empty_grocery_screen.dart';
+import 'package:fooderlich/models/screens/grocery_item_screen.dart';
 import 'package:provider/provider.dart';
 
 class GroceryScreen extends StatelessWidget {
@@ -14,7 +15,23 @@ class GroceryScreen extends StatelessWidget {
       body: buidGroceyScreen(),
       floatingActionButton: FloatingActionButton(
         // Al presionar el boton se mostrará la pantalla para crear un nuevo elemento
-        onPressed: () {},
+        onPressed: () {
+          // Consultar el estado de comestibles disponible en el árbol de widgets
+          final manager = Provider.of<GroceryManager>(context, listen: false);
+          // Navegar a una nueva ruta
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  // Navegar a la pantalla de GroceryItemScreen()
+                  builder: (context) => GroceryItemScreen(
+                          // Indicar que se va a crear un nuevo elemento
+                          onCreate: (item) {
+                        // agregarlo a la lista de comestibles
+                        manager.addItem(item);
+                        // Sacar esta pantalla de la pila de rutas
+                        Navigator.pop(context);
+                      })));
+        },
         child: const Icon(Icons.add),
       ),
     );
