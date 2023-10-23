@@ -4,6 +4,7 @@ import 'package:fooderlich/components/grocery_tile.dart';
 import 'package:fooderlich/models/models.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 class GroceryItemScreen extends StatefulWidget {
   // Callback que permite saber cuando se crea un nuevo elemento
@@ -87,7 +88,25 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
         actions: [
           IconButton(
               // El usuario tocara este botón cuando ha terminado de crear un artículo
-              onPressed: () {},
+              onPressed: () {
+                // Se crea un producto comestible a partir de las propiedades de estado
+                final groceryItem = GroceryItem(
+                    // Si se trata de un producto existente, se conserva su id, caso contrario, se genera uno aleatorio
+                    id: widget.originalItem?.id ?? const Uuid().v1(),
+                    name: _nameController.text,
+                    importance: _importance,
+                    color: _currentColor,
+                    quantity: _currentSliderValue,
+                    date: DateTime(_dateTime.year, _dateTime.month,
+                        _dateTime.day, _dateTime.hour, _dateTime.minute));
+
+                // Si el usuario esta actualizando un producto existente, se invoca el método pertinente para actualizar, en caso contrario se registra el nuevo ingrediente.
+                if (widget.isUpdating) {
+                  widget.onUpdate!(groceryItem);
+                } else {
+                  widget.onCreate!(groceryItem);
+                }
+              },
               icon: const Icon(Icons.check))
         ],
         title: Text(
@@ -115,6 +134,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
             // La intensión es mostrar un preview del comestible con los valores de las propiedades del estado interno de este Widget
             GroceryTile(
               item: GroceryItem(
+                  id: const Uuid().v1(),
                   name: _name,
                   importance: _importance,
                   color: _currentColor,

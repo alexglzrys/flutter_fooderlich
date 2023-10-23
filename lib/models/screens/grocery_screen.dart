@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooderlich/models/models.dart';
 import 'package:fooderlich/models/screens/empty_grocery_screen.dart';
 import 'package:fooderlich/models/screens/grocery_item_screen.dart';
+import 'package:fooderlich/models/screens/grocery_list_screen.dart';
 import 'package:provider/provider.dart';
 
 class GroceryScreen extends StatelessWidget {
@@ -44,7 +45,7 @@ class GroceryScreen extends StatelessWidget {
     return Consumer<GroceryManager>(builder: (context, manager, child) {
       if (manager.groceryItems.isNotEmpty) {
         // Mostrar la pantalla con la lista de alimentos
-        return Container();
+        return GroceryListScreen(manager: manager);
       } else {
         // Mostrar la pantalla cuando no existen elementos agregados a la lista de alimentos
         return const EmptyGroceryScreen();

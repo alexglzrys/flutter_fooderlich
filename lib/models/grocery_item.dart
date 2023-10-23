@@ -4,7 +4,7 @@ import 'package:flutter/painting.dart';
 enum Importance { low, medium, hihg }
 
 class GroceryItem {
-  late final String? id;
+  late final String id;
   late final String name;
   late final Importance importance;
   late final Color color;
@@ -14,7 +14,7 @@ class GroceryItem {
 
   // Un usuario puede crear un producto comestible a partir del nombre, nivel de importancia, color, cantidad, fecha de compra. Así como marcar los productos completados
   GroceryItem(
-      {this.id,
+      {required this.id,
       required this.name,
       required this.importance,
       required this.color,
