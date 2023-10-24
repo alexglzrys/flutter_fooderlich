@@ -21,9 +21,12 @@ class GroceryListScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           // Para cada elemento en la lista, obtnener su información
           final item = groceryItems[index];
+          // Los Widgets de gestos (Dismissible y InkWell) reconocen y determinan el tipo de evento táctil realizado por el usuario.
+          // Proporcionan Callbacks para reaccionar ante eventos como toque, doble toque, arrastrar, mantener presionado, etc.
+
           // Disimissable
           return Dismissible(
-            // Se requiere el key para que Flutter localice y elimine el el widget del árbol de elementos
+            // Se requiere el key para que Flutter localice y elimine el widget del árbol de elementos
             key: Key(item.id),
             // Dirección en la que el usuario puede deslizar el dedo para eliminar este item
             direction: DismissDirection.endToStart,
@@ -35,7 +38,7 @@ class GroceryListScreen extends StatelessWidget {
                   color: Colors.white, size: 50.0),
             ),
             // Evento que se dispara cuando el usuario elimina un elemento mediante el widget Dissmisable()
-            // Prácticamente cuando el usuario desliza el dedo
+            // Prácticamente cuando el usuario desliza el dedo por completo
             onDismissed: (direction) {
               // Borrar el item seleccionado de la lista de ingredientes declarada en el estado global de la aplicación
               manager.deletedItem(index);

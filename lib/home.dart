@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     // Declarar un Consumidor y envolver el árbol de widgets que consumiran el estado
-    // Cuando TabManager cambie, los widgets debajo de este consumidor se reconstruiran
+    // Cuando TabManager cambie, el Consumer escuchará los cambios, y los widgets debajo de este consumidor se reconstruiran
     return Consumer<TabManager>(builder: (context, tabManager, child) {
       // Existen 3 catagorias principales de widgets: Estructura y Navegación, Mostrar información, y Posicionamiento
 
@@ -56,7 +56,12 @@ class _HomeState extends State<Home> {
 
         // Muestra el widget correcto con base al índice de la pestaña actualmente seleccionada
         // La información se consume desde el estado que ofrece el Proveedor
-        body: pages[tabManager.selectedTab],
+        //body: pages[tabManager.selectedTab],
+
+        // Almacenar en caché la página seleccionada
+        // Muestra un widget secundario a la vez, pero conserva el estado de todos los widgets secundarios
+        // Conserva la posición de desplazamiento cuando se cambia de pestaña, y evita que se haga nuevamente la solicitud para volver a obtener los datos desde un servidor externo (API)
+        body: IndexedStack(index: tabManager.selectedTab, children: pages),
         // Agregar barra de navegación inferior
         bottomNavigationBar: BottomNavigationBar(
             // Establecer el color cuando un elemento de navegación está seleccionado

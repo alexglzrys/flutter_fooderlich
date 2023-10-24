@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Clase manejadora de estado que administra el índice de la pestaña o Tab seleccionado por el usuario
+// Es importante crear objetos de administración, para administrar funciones y cambios de estado en un solo lugar
 
 // TabManager extiende de ChangeNotifier.
 // Esto permite que el objeto de esta clase proporcione notificaciones de cambios a sus oyentes

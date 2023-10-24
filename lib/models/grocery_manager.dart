@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooderlich/models/models.dart';
 
 // Clase que maneja el estado para administrar la lista de alimentos o ingredientes
+// Es importante crear objetos de administración, para administrar funciones y cambios de estado en un solo lugar
 
 // GroceryManager extiende de ChangeNotifier.
 // Esto permite que el objeto de esta clase proporcione notificaciones de cambios a sus oyentes

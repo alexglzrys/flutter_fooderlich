@@ -22,6 +22,8 @@ class Fooderlich extends StatelessWidget {
       theme: theme,
       title: 'Fooderlich',
       // 1. Proveer los proveedores de estado
+      // El proveedor ayuda a exponer los objetos del modelo de estado a los widgets que están por debajo de él.
+      // El proveedor es un asistente de administración del estado, que actúa como contenedor para los widgets heredados
       // MultiProvider() acepta una lista de proveedores de estado a los que pueden acceder los widgets descendiente de Home
       home: MultiProvider(providers: [
         // ChangeNotifierProvider() crea una instancia de TabManager, que escucha los cambios en el índice de pestañas y notifica a sus oyentes de posibles cambios
