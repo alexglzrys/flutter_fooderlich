@@ -98,7 +98,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
                     color: _currentColor,
                     quantity: _currentSliderValue,
                     date: DateTime(_dateTime.year, _dateTime.month,
-                        _dateTime.day, _dateTime.hour, _dateTime.minute));
+                        _dateTime.day, _timeOfDay.hour, _timeOfDay.minute));
 
                 // Si el usuario esta actualizando un producto existente, se invoca el método pertinente para actualizar, en caso contrario se registra el nuevo ingrediente.
                 if (widget.isUpdating) {
