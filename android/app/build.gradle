@@ -45,7 +45,9 @@ android {
         applicationId "com.example.fooderlich"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        // minSdkVersion flutter.minSdkVersion
+
+        minSdkVersion 19 // webview_flutter depende de Android SDK >= 19 para poder trabajar
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
